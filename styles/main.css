@@ -1,0 +1,164 @@
+html {
+    background: black;
+    animation: colors 10s ease-in-out infinite;
+}
+
+
+.wrap{
+    /*max-width:1200px;*/
+    width:100%;
+    margin: 200px auto;
+    text-align:center;
+    display:block;
+
+}
+
+h1
+{
+    color: white;
+    font-size: 88px;
+    text-align: center;
+    display: block;
+}
+
+@keyframes colors {
+
+    0% {
+        background-color: #05b5bc;
+    }
+
+    50%{
+        background-color: #00b350;
+        opacity:0.8;
+    }
+    70% {
+        background-color: #ced505;
+    }
+    100% {
+        background-color: #cb3d06;
+    }
+
+}
+
+@keyframes rotate {
+
+    0% {
+        transform:rotate(0deg);
+        background-color:red;
+        transform:scale(0.3);
+    }
+    20% {
+
+        background-color:orange;
+    }
+    40% {
+        transform:scale(0.4);
+        background-color:red;
+    }
+    60%{
+
+        transform:scale(0.6);
+    }
+    80%{
+
+        transform:scale(0.8);
+    }
+    90%{
+        background-color:purple;
+
+    }
+    100% {
+        transform:rotate(360deg);
+        background-color:pink;
+        transform:scale(0.1);
+    }
+
+}
+
+
+.circle{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    margin:5px auto;
+}
+
+#play{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    color:black;
+    font-size:18px;
+    outline:0;
+    border:none;
+    display:inline-block;
+    background:purple;
+    color:orange;
+}
+
+.round{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    animation: rotate 2s linear infinite;
+    background:yellow;
+    display:inline-block;
+    position:relative;
+
+}
+
+.round:nth-of-type(even){
+    animation-delay: 1s;
+}
+
+
+.round:nth-of-type(1){
+    top:10px;
+    left:50px;
+
+
+}
+.round:nth-of-type(2){
+    top:-50px;
+    left:80px;
+
+
+}
+.round:nth-of-type(3){
+    top:-150px;
+    left:-20px;
+
+
+}
+.round:nth-of-type(4){
+    top:-100px;
+    left:20px;
+
+
+}
+.round:nth-of-type(5){
+    top:-50px;
+    left:-20px;
+
+
+}
+.round:nth-of-type(6){
+    top:-120px;
+    left:-80px;
+
+
+}
+@keyframes rot{
+    from { transform: rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.rotate{
+    transform-origin:50% -50%;
+    animation: rot 3s linear infinite;
+
+
+}
