@@ -147,7 +147,7 @@ window.onload = function () {
   }
 
 
-  // Hangman
+  // Hangman canvas 
   function canvas(){
 
     myStickman = document.getElementById("stickman");
@@ -181,90 +181,6 @@ window.onload = function () {
 
     chalk.volume = 1.0;
     chalk.play();
-    // setInterval(function() {
-    //   amount += 0.05; // change to alter duration
-    //   if (amount > 1) amount = 1;
-    //   switch (drawType)
-    //   {
-    //     case "line1":
-    //
-    //       context.beginPath();
-    //       context.strokeStyle = "whitesmoke";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //
-    //       break;
-    //     case "line2":
-    //       context.beginPath();
-    //       context.strokeStyle = "whitesmoke";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "line3":
-    //       context.beginPath();
-    //       context.strokeStyle = "whitesmoke";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "line4":
-    //       context.beginPath();
-    //       context.strokeStyle = "whitesmoke";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "torso":
-    //       context.beginPath();
-    //       context.strokeStyle = "whitesmoke";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "rightArm":
-    //       context.beginPath();
-    //       context.strokeStyle = "#EDFA00";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "leftArm":
-    //       context.beginPath();
-    //       context.strokeStyle = "#EDFA00";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "rightLeg":
-    //       context.beginPath();
-    //       context.strokeStyle = "#3340D4";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //     case "leftLeg":
-    //       context.beginPath();
-    //       context.strokeStyle = "#3340D4";
-    //       context.moveTo(pathFromx, pathFromy);
-    //       // lerp : a  + (b - a) * f
-    //       context.lineTo(pathFromx + (pathTox - pathFromx) * amount, pathFromy + (pathToy - pathFromy) * amount);
-    //       context.stroke();
-    //       break;
-    //
-    //
-    //   }
-    // }, 30);
-
       switch (drawType)
       {
         case "line1":
