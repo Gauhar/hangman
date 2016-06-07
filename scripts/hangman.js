@@ -10,19 +10,29 @@ window.onload = function () {
     var chosenCategory;     // Selected catagory
     var getHint;          // Word getHint
     var word;              // Selected word
-    var guess;             // Geuss
-    var geusses = [];      // Stored geusses
+    var guess;             // guess
+    var guesses = [];      // Stored guesses
     var lives;             // Lives
-    var counter;           // Count correct geusses
+    var counter;           // Count correct guesses
     var space;              // Number of spaces in word '-'
+    var myStickman; // canvas
+    var context; // canvas context
+    var myButtons; // buttons with id
+    var letters; // creating a ul
+    var list; // creating list for alphabets
+    var wordHolder; // the holder for words
+    var correct; // word to guess
+
 
     // categories
     var categories = [
-        ["pakistan", "canada", "Romania", "australia"],
+        ["pakistan", "canada", "romania", "australia"],
         ["inception", "inside out", "revenant", "matrix", "transcendence"],
         ["snake", "zebra", "lion", "human", "chicken"]
     ];
 
+    //
+    var drawArray = [rightLeg, leftLeg, rightArm, leftArm, torso, head, smallVerticalFrame, upperHorzontalFrame, verticalFrame, lowerFrame];
 
     // hints
     var hints = [
@@ -40,7 +50,8 @@ window.onload = function () {
 
     // audio files
     var backgroundMusic = new Audio();
-    backgroundMusic.src = "~/../../Music/background-music.mp3";
+    backgroundMusic.src = "~/../../Music/background-music1.mp3";
+    backgroundMusic.volume = 0.2;
 
     var idiot = new Audio();
     idiot.src = "~/../../Music/idiot.mp3";
@@ -114,8 +125,6 @@ window.onload = function () {
         drawOnCanvas(60, 70, 20, 100, "leftLeg");
     }
 
-    //
-    drawArray = [rightLeg, leftLeg, rightArm, leftArm, torso, head, smallVerticalFrame, upperHorzontalFrame, verticalFrame, lowerFrame];
 
     // Animate man
     function animate() {
@@ -131,14 +140,13 @@ window.onload = function () {
         for (var i = 0; i < alphabet.length; i++) {
             letters.id = 'alphabet';
             list = document.createElement('li');
-            list.id = 'letter';
+            list.id = alphabet[i];
             list.innerHTML = alphabet[i];
             check();
             myButtons.appendChild(letters);
             letters.appendChild(list);
         }
     }
-
 
     // Select Catagory
     function selectCategory() {
@@ -151,7 +159,7 @@ window.onload = function () {
         }
     }
 
-    // Create geusses ul
+    // Create guesses ul
     function result() {
         wordHolder = document.getElementById('hold');
         correct = document.createElement('ul');
@@ -166,7 +174,7 @@ window.onload = function () {
                 guess.innerHTML = "_";
             }
 
-            geusses.push(guess);
+            guesses.push(guess);
             wordHolder.appendChild(correct);
             correct.appendChild(guess);
         }
@@ -180,7 +188,7 @@ window.onload = function () {
             showLives.style.color = "red";
         }
         if (lives < 1) {
-            showLives.innerHTML = "Game Over";
+            showLives.innerHTML = "Game Over" + " ( The word was " + word + " )";
             showLives.style.color = "red";
             backgroundMusic.pause();
             idiot.pause();
@@ -188,8 +196,8 @@ window.onload = function () {
             gameOver.play();
 
         }
-        for (var i = 0; i < geusses.length; i++) {
-            if (counter + space === geusses.length) {
+        for (var i = 0; i < guesses.length; i++) {
+            if (counter + space === guesses.length) {
                 showLives.innerHTML = "You Win!";
                 backgroundMusic.pause();
                 pro.pause();
@@ -219,93 +227,25 @@ window.onload = function () {
 
         chalk.volume = 1.0;
         chalk.play();
-        switch (drawType) {
-            case "lowerFram":
-
-                context.beginPath();
-                context.strokeStyle = "whitesmoke";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-
-                break;
-            case "verticalFrame":
-                context.beginPath();
-                context.strokeStyle = "whitesmoke";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "upperHorzontalFrame":
-                context.beginPath();
-                context.strokeStyle = "whitesmoke";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "smallVerticalFrame":
-                context.beginPath();
-                context.strokeStyle = "whitesmoke";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "torso":
-                context.beginPath();
-                context.strokeStyle = "whitesmoke";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "rightArm":
-                context.beginPath();
-                context.strokeStyle = "#EDFA00";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "leftArm":
-                context.beginPath();
-                context.strokeStyle = "#EDFA00";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "rightLeg":
-                context.beginPath();
-                context.strokeStyle = "#3340D4";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-            case "leftLeg":
-                context.beginPath();
-                context.strokeStyle = "#3340D4";
-                context.moveTo(pathFromx, pathFromy);
-                // lerp : a  + (b - a) * f
-                context.lineTo(pathTox, pathToy);
-                context.stroke();
-                break;
-        }
+        context.beginPath();
+        context.strokeStyle = "whitesmoke";
+        context.moveTo(pathFromx, pathFromy);
+        context.lineTo(pathTox, pathToy);
+        context.stroke();
     }
 
-    // OnClick Function
-    function check() {
-        list.onclick = function () {
-            var geuss = (this.innerHTML);
-            this.setAttribute("class", "active");
-            this.onclick = null;
+    function checkForMatches (char)
+    {
+         
+        var guess = char;
+        var tempListItem = document.getElementById(char);
+        if(tempListItem.onclick != null)
+        {
+            tempListItem.setAttribute("class", "active");
+            tempListItem.onclick = null;
             for (var i = 0; i < word.length; i++) {
-                if (word[i] === geuss) {
-                    geusses[i].innerHTML = geuss;
+                if (word[i] === guess) {
+                    guesses[i].innerHTML = guess;
                     counter += 1;
 
                     var randForSound = Math.floor(Math.random() * 2);
@@ -317,7 +257,7 @@ window.onload = function () {
                     }
                 }
             }
-            var j = (word.indexOf(geuss));
+            var j = (word.indexOf(guess));
             if (j === -1) {
                 var randForSound = Math.floor(Math.random() * 2);
                 lives -= 1;
@@ -333,8 +273,21 @@ window.onload = function () {
                 }
             }
             else {
+                 
                 showlivesGameStatus();
             }
+        }
+
+
+    }
+
+    // OnClick Function
+    function check() {
+        list.onclick = function () {
+             
+            var guess = (this.innerHTML);
+            checkForMatches(guess);
+
         }
     }
 
@@ -345,7 +298,7 @@ window.onload = function () {
         word = word.replace(/\s/g, "-");
         console.log(word);
         buttons();
-        geusses = [];
+        guesses = [];
         lives = 10;
         counter = 0;
         space = 0;
@@ -412,8 +365,26 @@ window.onload = function () {
 
     }
 
+    // on clicks functions and calling play and key stroke
 
-    // on clicks functions and calling play
+    document.onkeydown =  function(e)
+    {
+         
+        var keyNumber;
+        var character;
+        if(window.event) {
+            // for IE
+            keyNumber = e.keyCode;
+        }
+        else {
+            keyNumber = e.which;
+        }
+        character = String.fromCharCode(keyNumber);
+
+        checkForMatches(character.toLowerCase());
+
+    };
+
     getHint.onclick = function () {
 
         showHint();

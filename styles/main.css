@@ -110,6 +110,7 @@ h1
 
 }
 
+
 .round:nth-of-type(even){
     animation-delay: 1s;
 }
@@ -151,9 +152,16 @@ h1
 
 
 }
+
 @keyframes rot{
-    from { transform: rotate(0deg);}
-    to{transform:rotate(360deg);}
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform:rotate(360deg);
+    }
 }
 
 .rotate{
